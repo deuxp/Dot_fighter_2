@@ -10,9 +10,7 @@ function List({ messages }) {
     })
     
   return (
-      <>
-          <li>{listRender}</li>
-      </>
+    <>{listRender}</>
   )
 }
 

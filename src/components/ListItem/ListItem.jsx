@@ -1,14 +1,15 @@
 import React from 'react'
+import './ListItem.scss'
 
 function ListItem({ body, id, created_at }) {
     
     
   return (
-    <article>
+    <li>
         <h2>message#: {id}</h2>
-        <p>{created_at}</p>
-        <p>{body}</p>
-    </article>
+        <p className='created-at' >{created_at}</p>
+        <p className='message-body' >{body}</p>
+    </li>
   )
 }
 
