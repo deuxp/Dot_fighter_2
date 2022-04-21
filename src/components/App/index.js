@@ -1,30 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.scss";
 import List from "../List/List";
+import NewMessage from "../NewMessage";
+import axios from "axios";
 
-const initialState = [
-  {
-    id: 1,
-    body: "hello there, can anybody see me?",
-    created_at: "2022-04-20T19:12:34.877Z",
-  },
-  {
-    id: 2,
-    body: "is any of this matter?",
-    created_at: "2022-04-20T20:30:42.458Z",
-  },
-  {
-    id: 3,
-    body: "Come one come all",
-    created_at: "2022-04-20T20:31:23.973Z",
-  },
-];
+const initialState = [];
+const API_MESSAGES = "http://localhost:8080/api/messages";
 
 function App() {
   const [state, setState] = useState(initialState);
 
+  // initailize state
+  useEffect(() => {
+    axios.get(API_MESSAGES).then((res) => {
+      const messages = res.data;
+      console.log(messages);
+      setState([...messages]);
+    });
+  }, []);
+
   return (
     <>
+      <h1 className="new-message-header">Write Message</h1>
+      <NewMessage />
+      <h3>Message History</h3>
       <ul>
         <List messages={state} />
       </ul>
