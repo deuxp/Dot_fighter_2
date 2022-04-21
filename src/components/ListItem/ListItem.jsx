@@ -1,8 +1,14 @@
 import React from 'react'
 
-function ListItem() {
+function ListItem({ body, id, created_at }) {
+    
+    
   return (
-    <div>ListItem</div>
+    <article>
+        <h2>message#: {id}</h2>
+        <p>{created_at}</p>
+        <p>{body}</p>
+    </article>
   )
 }
 
