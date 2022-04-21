@@ -6,7 +6,7 @@ function List({ messages }) {
 
     const listRender = messages.map(message => { 
         const { body, id, created_at} = message;
-        return <ListItem body={body} id={id} created_at={created_at} />
+        return <ListItem key={id} body={body} id={id} created_at={created_at} />
     })
     
   return (
